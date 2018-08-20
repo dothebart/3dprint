@@ -7,7 +7,7 @@ length=66;
 thick=3;
 
 // which dimensions should the strap to attach it to the stem have:
-strapWidth=5;
+strapWidth=5.5;
 strapThickness=1.5 * 1.4; // physical thickness * factor to be more easy
                           // able to push it through the tunnel
 
