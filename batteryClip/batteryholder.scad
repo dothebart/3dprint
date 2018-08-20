@@ -8,7 +8,8 @@ thick=3;
 
 // which dimensions should the strap to attach it to the stem have:
 strapWidth=5;
-strapThickness=1.8;
+strapThickness=1.5 * 1.4; // physical thickness * factor to be more easy
+                          // able to push it through the tunnel
 
 // thickness of the complete thing so the strap can nicely be fit inside:
 shellWidth = strapWidth + 2;
@@ -28,19 +29,16 @@ outerWidth = width + 2 * thick;
 outerHeight = height + 2 * thick;
 
 // calculate the position of the stem:
-stemCenter =  stemWidth / 2 + outerWidth / 2 + stemDelta - thick;
+stemCenter =  stemWidth / 2 + outerHeight / 2 + stemDelta - thick;
 
 echo("stemCenter is: ");
 echo(stemCenter);
 
 // Battery frame:
-minkowski() {
-    difference () {
-        cube([outerWidth, outerHeight, shellWidth], center=true);
-        // whole to push the battery through:
-        # cube([width, height, shellWidth + 2], center=true);
-    }
-//    cylinder(r=2,h=1);
+difference () {
+    cube([outerWidth, outerHeight, shellWidth], center=true);
+    // whole to push the battery through:
+    # cube([width, height, shellWidth + 2], center=true);
 }
 
 difference() {
@@ -70,35 +68,3 @@ difference() {
     }
     
 }
-
-/*
-module kugelcube(x, y, z, xdim,ydim,zdim,rdim){
-translate([x,y,z]) hull(){
-translate([rdim,rdim,0])sphere(r=rdim);
-translate([xdim-rdim,rdim,0])sphere(r=rdim);
-translate([rdim,ydim-rdim,0])sphere(r=rdim);
-translate([xdim-rdim,ydim-rdim,0])sphere(r=rdim);
-translate([rdim,rdim,zdim-rdim-rdim])sphere(r=rdim);
-translate([xdim-rdim,rdim,zdim-rdim-rdim])sphere(r=rdim);
-translate([rdim,ydim-rdim,zdim-rdim-rdim])sphere(r=rdim);
-translate([xdim-rdim,ydim-rdim,zdim-rdim-rdim])sphere(r=rdim);
-}
-}
-
-module rahmen(x, y, width) {
-/*
-    kugelcube(-x / 2, -y / 2, width / 2,   x, width, width, width);
-echo(x);
-    translate([-x / 2, -y / 2, width / 2])
-    # cylinder(r=10, h= 500, center=true);
-
-  * /  kugelcube(-x / 2, -y / 2, width / 2,   x, width, width, width);
-    kugelcube(-x / 2, +y / 2, width / 2,   x, width, width, width);
-    #kugelcube(-x / 2, +y / 2, width / 2,   width, -y, width, width);
-    kugelcube(+x / 2, +y / 2, width / 2,   width, -y, width, width);
-    
-}
-
-
-rahmen(300, 600, 50);
-*/
