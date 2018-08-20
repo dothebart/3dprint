@@ -18,7 +18,7 @@ shellWidth = strapWidth + 2;
 connectHoleRadius = 1.5;
 
 // Diameter of the tube to attach to:
-stemWidth = 31;
+stemWidth = 34;
 // how far away schould the battery be from the tube?
 // you may need to have some distance so the handle bar mount screws can
 // be passed by the battery when inserting it
