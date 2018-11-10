@@ -34,14 +34,41 @@ stemCenter =  stemWidth / 2 + stemDelta - thick;
 echo("stemCenter is: ");
 echo(stemCenter);
 
+// size - [x,y,z]
+// radius - radius of corners
+module roundedRect(size, radius)
+{
+    x = size[0];
+    y = size[1];
+    z = size[2];
+
+    translate([0,0, - z/2])
+    linear_extrude(height=z)
+    hull()
+    {
+        // place 4 circles in the corners, with the given radius
+        translate([(-x/2)+(radius/2), (-y/2)+(radius/2), 0])
+        circle(r=radius, $fn=64);
+
+        translate([(x/2)-(radius/2), (-y/2)+(radius/2), 0])
+        circle(r=radius, $fn=64);
+
+        translate([(-x/2)+(radius/2), (y/2)-(radius/2), 0])
+        circle(r=radius, $fn=64);
+
+        translate([(x/2)-(radius/2), (y/2)-(radius/2), 0])
+        circle(r=radius, $fn=64);
+    }
+}
+
 
 difference() {
     union() {
         // Battery frame, upper line of the battery is the 0-line:
         translate ([0, - height / 2, 0]) difference () {
-            cube([outerWidth, outerHeight, shellWidth], center=true);
+            roundedRect([outerWidth, outerHeight, shellWidth], center=true, 2);
             // whole to push the battery through:
-            cube([width, height, shellWidth + 2], center=true);
+            # cube([width, height, shellWidth + 2], center=true);
         }
         // the triangle to the stem:
         linear_extrude(shellWidth, center=true) polygon([
@@ -61,15 +88,14 @@ difference() {
       cylinder(h=shellWidth + 2, r=connectHoleRadius, center = true, $fn=16);
     translate([- width / 2, stemDelta / 2,  0])
       cylinder(h=shellWidth + 2, r=connectHoleRadius, center = true, $fn=16);
-    
-    // dig the tunnel for the ratbelt:
+
+      // dig the tunnel for the ratbelt:
     difference() {
         tunnelRadius = stemWidth / 2  + strapThickness * 1.5;
-        
+
         translate([0,  stemCenter, 0])
         # cylinder(h=shellWidth - 2, r=tunnelRadius, center=true, $fn=64);
         translate([0,  stemCenter, 0])
         # cylinder(h=shellWidth - 1, r=tunnelRadius - strapThickness, center=true, $fn=64);
     }
-    
 }
