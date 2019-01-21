@@ -28,12 +28,8 @@ difference() {
     }
 
 
-    translate([kEdgeScrewY / 2, kEdgeScrewX / 2, .3])  #cylinder(h=kEdgeHeight, d=kEdgeSrewDiameter, $fn=96);
-    translate([kEdgeScrewY / 2, -kEdgeScrewX / 2, .3]) #cylinder(h=kEdgeHeight, d=kEdgeSrewDiameter, $fn=96);
-    translate([-kEdgeScrewY / 2, -kEdgeScrewX / 2, .3]) #cylinder(h=kEdgeHeight, d=kEdgeSrewDiameter, $fn=96);
-    translate([-kEdgeScrewY / 2, kEdgeScrewX / 2, .3]) #cylinder(h=kEdgeHeight, d=kEdgeSrewDiameter, $fn=96);
-
-
-
-
+    translate([kEdgeScrewY / 2, kEdgeScrewX / 2, .2])  #cylinder(h=kEdgeHeight, d=kEdgeSrewDiameter, $fn=96);
+    translate([kEdgeScrewY / 2, -kEdgeScrewX / 2, .2]) #cylinder(h=kEdgeHeight, d=kEdgeSrewDiameter, $fn=96);
+    translate([-kEdgeScrewY / 2, -kEdgeScrewX / 2, .2]) #cylinder(h=kEdgeHeight, d=kEdgeSrewDiameter, $fn=96);
+    translate([-kEdgeScrewY / 2, kEdgeScrewX / 2, .2]) #cylinder(h=kEdgeHeight, d=kEdgeSrewDiameter, $fn=96);
 }
