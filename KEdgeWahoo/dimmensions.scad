@@ -7,7 +7,7 @@ kEdgeScrewHeight = 7;
 // once we put it through the k-edge...
 kEdgeScrewRestHeight = kEdgeScrewHeight - 2;
 
-wahooSocketDiameter = 25;
+wahooSocketDiameter = 25 + 1; // +1 so it can go through easily
 wahooNodgeDiameter = 29 + 1; // +1 so it can go through easily
 wahooNodgeHeight = 1.5 + 0.4;
 wahooNodgeWidth = 12 + 0.4;
