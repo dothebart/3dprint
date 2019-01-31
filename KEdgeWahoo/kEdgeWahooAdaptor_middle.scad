@@ -27,11 +27,24 @@ difference() {
 translate([0, 0, height / 2])
 cube([wahooNodgeWidth, wahooNodgeDiameter, height], center=true);
 
-translate([  pawlOffset, 0, 1]) hull() {
-    translate([  + 1, 0, 0]) sphere(d=wahooPawlWidth, $fn=64);
-    translate([  - 1, 0, 0]) sphere(d=wahooPawlWidth, $fn=64);
+
+rotate(a=1) {
+    translate([  pawlOffset, 0, kEdgeSnapLayerHeight]) hull() {
+        translate([  + 1, 0, 0]) sphere(d=wahooPawlWidth, $fn=64);
+        translate([  - 1, 0, 0]) sphere(d=wahooPawlWidth, $fn=64);
+    }
+    translate([- pawlOffset, 0, kEdgeSnapLayerHeight]) hull() {
+        translate([  + 1, 0, 0]) sphere(d=wahooPawlWidth, $fn=64);
+        translate([  - 1, 0, 0]) sphere(d=wahooPawlWidth, $fn=64);
+    }
 }
-translate([- pawlOffset, 0, 1]) hull() {
-    translate([  + 1, 0, 0]) sphere(d=wahooPawlWidth, $fn=64);
-    translate([  - 1, 0, 0]) sphere(d=wahooPawlWidth, $fn=64);
+rotate(a=-1) {
+    translate([  pawlOffset, 0, kEdgeSnapLayerHeight]) hull() {
+        translate([  + 1, 0, 0]) sphere(d=wahooPawlWidth, $fn=64);
+        translate([  - 1, 0, 0]) sphere(d=wahooPawlWidth, $fn=64);
+    }
+    translate([- pawlOffset, 0, kEdgeSnapLayerHeight]) hull() {
+        translate([  + 1, 0, 0]) sphere(d=wahooPawlWidth, $fn=64);
+        translate([  - 1, 0, 0]) sphere(d=wahooPawlWidth, $fn=64);
+    }
 }
